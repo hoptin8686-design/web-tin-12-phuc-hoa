@@ -53,12 +53,22 @@ export default function LessonClient({
   if (mode === "sgk" && sgkUrl) {
     return (
       <div className="fixed inset-0 z-50 bg-[#05070b]">
-        <button
-          onClick={() => setMode("menu")}
-          className="fixed left-3 top-3 z-10 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 font-mono text-xs text-white backdrop-blur transition hover:border-white/40"
-        >
-          ← Quay lại
-        </button>
+        <div className="fixed left-3 top-3 z-10 flex items-center gap-2">
+          <button
+            onClick={() => setMode("menu")}
+            className="rounded-full border border-white/20 bg-black/70 px-3.5 py-1.5 font-mono text-xs text-white backdrop-blur transition hover:border-white/40 hover:bg-black/90"
+          >
+            ← Quay lại
+          </button>
+          <a
+            href={sgkUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-cyan-500/30 bg-cyan-950/70 px-3.5 py-1.5 font-mono text-xs text-cyan-300 backdrop-blur transition hover:border-cyan-400 hover:bg-cyan-900/80"
+          >
+            ↗ Mở toàn màn hình (.html)
+          </a>
+        </div>
         <iframe
           src={sgkUrl}
           title={`SGK · ${lessonTitle}`}
@@ -139,7 +149,7 @@ export default function LessonClient({
             key: "sgk" as Mode,
             emoji: "📘",
             name: "SGK",
-            desc: "Sách điện tử — xem nguyên bài trong sách giáo khoa",
+            desc: "Sách điện tử HTML chuẩn — đầy đủ nội dung và hình minh hoạ cắt từ SGK",
             best: null,
             done: false,
             enabled: true,
