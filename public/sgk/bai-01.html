@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 1: Làm quen với Trí tuệ nhân tạo – Tin học 12 KNTT (bản cập nhật 8/2026)</title>
+<meta name="description" content="SGK Tin học 12 Kết nối tri thức – Bài 1: Làm quen với Trí tuệ nhân tạo. Khái niệm AI, ứng dụng điển hình của Trí tuệ nhân tạo. Bản viết lại, cập nhật đến tháng 8/2026, minh hoạ mới.">
+<style>
+
+:root {
+  --bg: #070b14; --bg2: #0d1423; --panel: #111a2e; --panel2: #162035; --border: #1e2f4d;
+  --text: #e8eef8; --muted: #8899b8; --orange: #ff6b35; --orange2: #ff9a64;
+  --cyan: #38d9f5; --cyan2: #7ce8fa; --yellow: #ffd060; --green: #56e39f; --pink: #f06dba; --purple: #a78bfa;
+  --fs: 18px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: radial-gradient(ellipse at 20% 10%, #0d1f3c 0%, #070b14 50%);
+  color: var(--text); font-family: 'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,'Roboto','Helvetica Neue',Arial,sans-serif;
+  font-size: var(--fs); line-height: 1.75; min-height: 100vh;
+}
+.app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+.img-hero, .img-full, .img-illus { width:100%; border-radius:14px; margin:20px 0; border:1px solid var(--border); box-shadow:0 8px 28px rgba(0,0,0,.5); display:block; overflow:hidden; }
+.img-hero { height:220px; margin-top:20px; }
+.img-hero svg, .img-full svg, .img-illus svg { width:100%; height:auto; display:block; }
+.img-half { width:100%; border-radius:12px; margin:14px 0; border:1px solid var(--border); box-shadow:0 6px 20px rgba(0,0,0,.4); display:block; overflow:hidden; }
+.img-side { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; align-items:start; }
+.img-side .img-half { margin:0; }
+.img-caption { text-align:center; font-size:13px; color:var(--muted); font-style:italic; margin:-10px 0 16px; padding:0 8px; }
+.sidebar { position:sticky; top:0; height:100vh; overflow-y:auto; background:rgba(7,11,20,.97); border-right:1px solid var(--border); padding:24px 16px; backdrop-filter:blur(20px); }
+.brand-box { margin-bottom:24px; }
+.series-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); font-weight:700; margin-bottom:6px; }
+.brand-title { font-size:20px; font-weight:900; color:#fff; line-height:1.2; }
+.brand-title span { color:var(--orange); }
+.brand-sub { color:var(--muted); font-size:12px; margin-top:5px; }
+.toc-title { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700; margin:20px 0 8px; padding:0 8px; }
+.toc a { display:block; color:#9aaec8; text-decoration:none; padding:9px 12px; border-radius:10px; margin:2px 0; font-size:13.5px; font-weight:500; transition:all .2s; border-left:3px solid transparent; }
+.toc a:hover { background:rgba(56,217,245,.07); color:var(--cyan); border-left-color:var(--cyan); }
+.toc a.active { background:rgba(255,107,53,.1); color:var(--orange); border-left-color:var(--orange); }
+.ctrl-box { margin-top:24px; padding:14px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,.03); }
+.ctrl-box h4 { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.ctrl-row { display:flex; gap:8px; margin-bottom:8px; }
+.ctrl-btn { flex:1; background:var(--panel2); border:1px solid var(--border); color:var(--text); border-radius:9px; padding:8px 6px; cursor:pointer; font-size:13px; font-weight:600; transition:all .2s; }
+.ctrl-btn:hover { background:var(--border); color:#fff; }
+.progress-bar { height:4px; background:var(--panel2); border-radius:4px; overflow:hidden; margin-top:10px; }
+.progress-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--cyan),var(--orange)); transition:width .3s; border-radius:4px; }
+.main { max-width:860px; margin:0 auto; padding:32px 28px 80px; }
+.hero { background:linear-gradient(135deg,#0f2040 0%,#0a1628 60%,#131020 100%); border:1px solid var(--border); border-radius:24px; padding:36px 40px; margin-bottom:28px; box-shadow:0 24px 80px rgba(0,0,0,.5); position:relative; overflow:hidden; }
+.hero::before { content:'AI'; position:absolute; right:30px; top:20px; font-size:120px; font-weight:900; color:rgba(56,217,245,.05); line-height:1; user-select:none; }
+.chu-de-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(56,217,245,.12); border:1px solid rgba(56,217,245,.3); color:var(--cyan); font-size:13px; font-weight:700; padding:6px 14px; border-radius:20px; margin-bottom:16px; letter-spacing:.5px; }
+.update-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(255,208,96,.12); border:1px solid rgba(255,208,96,.35); color:var(--yellow); font-size:12.5px; font-weight:700; padding:5px 13px; border-radius:20px; margin:0 0 16px 8px; letter-spacing:.4px; }
+.hero h1 { font-size:clamp(28px,4vw,42px); font-weight:900; line-height:1.15; background:linear-gradient(90deg,#fff 0%,var(--cyan2) 50%,var(--orange2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:14px; }
+.hero-desc { color:#b0c4de; font-size:15.5px; line-height:1.6; }
+.goals-box { background:linear-gradient(135deg,#0c2233,#091c2a); border:1px solid rgba(56,217,245,.25); border-left:4px solid var(--cyan); border-radius:16px; padding:20px 24px; margin-bottom:28px; }
+.goals-box .goals-title { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--cyan); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.goals-box ul { list-style:none; }
+.goals-box li { padding:6px 0 6px 22px; position:relative; color:#c8dff0; font-size:15.5px; }
+.goals-box li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:700; }
+.nav-btns { display:flex; gap:10px; margin:10px 0 24px; }
+.nav-btn { background:var(--panel); border:1px solid var(--border); color:var(--text); border-radius:10px; padding:9px 18px; cursor:pointer; font-size:14px; font-weight:600; transition:all .2s; flex:1; }
+.nav-btn:hover:not(:disabled) { background:var(--panel2); border-color:var(--cyan); }
+.nav-btn:disabled { opacity:.35; cursor:default; }
+.section { background:rgba(11,17,30,.9); border:1px solid var(--border); border-radius:20px; padding:28px 32px 36px; margin-bottom:22px; scroll-margin-top:20px; position:relative; transition:border-color .3s; }
+.section:hover { border-color:rgba(56,217,245,.2); }
+.page-num { position:absolute; right:20px; bottom:14px; color:var(--muted); font-size:12px; font-weight:600; background:var(--panel2); padding:3px 10px; border-radius:10px; }
+.bai-cover { display:flex; align-items:center; gap:20px; background:linear-gradient(110deg,#1e0f0a,#1a1308,#0d1a28); border:1px solid rgba(255,107,53,.3); border-left:5px solid var(--orange); border-radius:16px; padding:24px 28px; margin-bottom:24px; }
+.bai-cover .num-block { flex-shrink:0; }
+.bai-num { font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+.bai-big { font-size:64px; font-weight:900; color:var(--orange); line-height:1; }
+.bai-cover .info .topic { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+.bai-cover .info .title { font-size:28px; font-weight:900; color:#fff; line-height:1.2; margin-top:6px; }
+.bai-cover .info .subtitle { font-size:14px; color:var(--cyan); margin-top:8px; }
+h2 { font-size:clamp(20px,2.5vw,26px); font-weight:800; color:#fff; margin:28px 0 14px; display:flex; align-items:center; gap:10px; }
+h2::before { content:''; display:inline-block; width:4px; height:24px; background:linear-gradient(var(--orange),var(--cyan)); border-radius:2px; flex-shrink:0; }
+h3 { font-size:clamp(16px,2vw,20px); font-weight:700; color:var(--cyan2); margin:22px 0 10px; }
+h4 { font-size:15px; font-weight:700; color:var(--orange2); margin:16px 0 8px; }
+p { color:#d0dcea; margin-bottom:14px; }
+p:last-child { margin-bottom:0; }
+em { color:var(--cyan2); font-style:italic; }
+strong { color:#fff; }
+ul, ol { padding-left:22px; margin:12px 0; }
+li { color:#c8d8ec; margin-bottom:8px; }
+li::marker { color:var(--cyan); }
+.activity { background:linear-gradient(135deg,#1a120a,#130f0a); border:1px solid rgba(255,160,60,.3); border-left:4px solid var(--orange); border-radius:14px; padding:18px 22px; margin:20px 0; }
+.activity-badge { display:inline-flex; align-items:center; gap:6px; background:var(--orange); color:#1a0a00; font-size:12px; font-weight:800; padding:4px 12px; border-radius:6px; margin-bottom:10px; letter-spacing:.5px; text-transform:uppercase; }
+.activity p, .activity li { color:#f0d8c0; }
+.info-box { background:linear-gradient(135deg,#071e2e,#071828); border:1px dashed rgba(56,217,245,.4); border-radius:14px; padding:18px 22px; margin:20px 0; }
+.info-box p, .info-box li { color:#b8d8f0; }
+.info-box strong { color:var(--cyan2); }
+.ghi-nho { background:linear-gradient(135deg,#1a2a10,#0f1e0a); border:1px solid rgba(86,227,159,.3); border-left:4px solid var(--green); border-radius:14px; padding:18px 22px; margin:20px 0; }
+.ghi-nho-title { color:var(--green); font-weight:800; font-size:14px; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+.ghi-nho p, .ghi-nho li { color:#c8f0d8; }
+.cau-hoi { background:var(--panel2); border:1px solid var(--border); border-radius:12px; padding:14px 18px; margin:10px 0; display:flex; gap:14px; align-items:flex-start; }
+.cau-hoi .q-num { background:var(--cyan); color:#07080f; font-weight:800; font-size:13px; min-width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.cau-hoi .q-text { color:#d8e8f8; font-size:15.5px; }
+.ai-types { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+.ai-card { background:var(--panel2); border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+.ai-card .ai-card-title { font-weight:800; color:var(--purple); margin-bottom:8px; font-size:15px; }
+.ai-card p { color:#c0cce0; font-size:14.5px; margin:0; }
+.app-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+.app-card { background:var(--panel2); border:1px solid var(--border); border-radius:14px; padding:16px 18px; transition:border-color .2s; }
+.app-card:hover { border-color:var(--cyan); }
+.app-card .icon { font-size:28px; margin-bottom:8px; }
+.app-card .app-name { font-weight:700; color:var(--cyan2); margin-bottom:6px; font-size:15px; }
+.app-card p { color:#b0c0d8; font-size:14px; margin:0; }
+.tag-luyen { display:inline-flex; align-items:center; gap:8px; background:rgba(167,139,250,.15); border:1px solid rgba(167,139,250,.4); color:var(--purple); font-weight:800; font-size:13px; padding:5px 14px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+.tag-van-dung { display:inline-flex; align-items:center; gap:8px; background:rgba(255,208,96,.1); border:1px solid rgba(255,208,96,.3); color:var(--yellow); font-weight:800; font-size:13px; padding:5px 14px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; }
+.callout { background:rgba(56,217,245,.06); border:1px dashed rgba(56,217,245,.3); border-radius:12px; padding:14px 18px; margin:16px 0; font-style:italic; color:var(--cyan2); font-size:15.5px; }
+.feature-item { background:var(--panel2); border:1px solid var(--border); border-radius:12px; padding:14px 18px; margin:10px 0; display:flex; gap:14px; }
+.feature-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+.feature-title { font-weight:700; color:var(--cyan2); margin-bottom:4px; }
+.feature-desc { color:#b8cce0; font-size:15px; }
+.mo-rong-section { border:2px solid rgba(167,139,250,.4); border-radius:24px; padding:0; margin:32px 0; position:relative; overflow:hidden; background:linear-gradient(145deg,#0d0a1f,#120e28,#0a1220); box-shadow:0 0 60px rgba(139,92,246,.15),0 20px 60px rgba(0,0,0,.6); }
+.mo-rong-header { background:linear-gradient(90deg,#4c1d95,#5b21b6,#312e81); padding:20px 32px; display:flex; align-items:center; gap:14px; }
+.mo-rong-badge { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:#fff; font-size:11px; font-weight:800; letter-spacing:2px; padding:4px 12px; border-radius:20px; text-transform:uppercase; flex-shrink:0; }
+.mo-rong-header-title { font-size:20px; font-weight:900; color:#fff; }
+.mo-rong-header-sub { font-size:13px; color:rgba(255,255,255,.7); margin-top:2px; }
+.mo-rong-body { padding:28px 32px; }
+.mo-rong-note { background:rgba(139,92,246,.1); border:1px dashed rgba(167,139,250,.5); border-radius:12px; padding:12px 18px; margin-bottom:24px; font-size:14px; color:#c4b5fd; display:flex; gap:10px; align-items:flex-start; }
+.tool-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+.tool-card { background:rgba(255,255,255,.04); border:1px solid rgba(167,139,250,.25); border-radius:16px; padding:20px 18px; transition:all .25s; position:relative; overflow:hidden; }
+.tool-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(139,92,246,.08),transparent); opacity:0; transition:opacity .3s; }
+.tool-card:hover { border-color:rgba(167,139,250,.6); transform:translateY(-2px); box-shadow:0 8px 28px rgba(139,92,246,.2); }
+.tool-card:hover::before { opacity:1; }
+.tool-logo { font-size:32px; margin-bottom:10px; }
+.tool-name { font-weight:800; font-size:16px; color:#e9d5ff; margin-bottom:4px; }
+.tool-maker { font-size:12px; color:#a78bfa; font-weight:600; margin-bottom:10px; letter-spacing:.5px; }
+.tool-desc { font-size:14px; color:#c0aee0; line-height:1.6; margin:0; }
+.tool-tag { display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:8px; margin:6px 4px 0 0; }
+.tag-new { background:rgba(34,197,94,.15); color:#86efac; border:1px solid rgba(34,197,94,.3); }
+.tag-code { background:rgba(56,217,245,.12); color:#67e8f9; border:1px solid rgba(56,217,245,.3); }
+.tag-chat { background:rgba(251,191,36,.12); color:#fde68a; border:1px solid rgba(251,191,36,.3); }
+.tag-free { background:rgba(249,115,22,.12); color:#fed7aa; border:1px solid rgba(249,115,22,.3); }
+.tag-star { background:rgba(167,139,250,.15); color:#ddd6fe; border:1px solid rgba(167,139,250,.4); }
+.antigravity-card { background:linear-gradient(135deg,#0f1e38,#172040,#0f2838) !important; border:2px solid rgba(56,217,245,.5) !important; box-shadow:0 0 30px rgba(56,217,245,.12); grid-column:1 / -1; }
+.antigravity-card .tool-name { color:var(--cyan2); font-size:20px; }
+.ag-inner { display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center; }
+.ag-features { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.timeline-item { display:flex; gap:16px; margin-bottom:14px; align-items:flex-start; }
+.tl-year { min-width:52px; height:48px; border-radius:12px; background:linear-gradient(135deg,#4c1d95,#6d28d9); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:11.5px; color:#fff; flex-shrink:0; box-shadow:0 4px 12px rgba(109,40,217,.4); text-align:center; line-height:1.15; }
+.tl-content .tl-title { font-weight:700; color:#e9d5ff; font-size:15px; }
+.tl-content .tl-desc { color:#b0a0d0; font-size:14px; margin-top:3px; }
+.tl-item-vn .tl-year { background:linear-gradient(135deg,#b91c1c,#ea580c); }
+.tl-item-vn .tl-title { color:#ffd9c4; }
+.vn-box { background:linear-gradient(135deg,rgba(220,38,38,.12),rgba(234,88,12,.06)); border:1px solid rgba(251,146,60,.4); border-radius:16px; padding:20px 22px; margin:22px 0; }
+.vn-box .vn-title { color:#fdba74; font-weight:800; font-size:15px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.vn-box p, .vn-box li { color:#f0d8c0; font-size:14.5px; }
+.vn-box ul { margin-top:8px; }
+.sidebar::-webkit-scrollbar { width:4px; }
+.sidebar::-webkit-scrollbar-track { background:transparent; }
+.sidebar::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+@media (max-width:900px) {
+  .app { display:block; } .sidebar { position:relative; height:auto; border-right:0; border-bottom:1px solid var(--border); }
+  .toc { display:grid; grid-template-columns:1fr 1fr; } .main { padding:18px 14px 60px; }
+  .ai-types, .app-grid, .img-side { grid-template-columns:1fr; } .bai-cover { flex-direction:column; }
+}
+@media (max-width:540px) {
+  body { font-size:16px; } .section { padding:18px 16px 30px; } .hero { padding:24px 20px; } .toc { grid-template-columns:1fr; }
+}
+@media print {
+  .sidebar, .nav-btns, .hero, .ctrl-box { display:none; } body { background:white; color:black; }
+  .section { border:1px solid #ccc; box-shadow:none; background:white; page-break-after:always; } p, li { color:#222; }
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand-box">
+    <div class="series-label">SGK Tin học 12 · KNTT</div>
+    <div class="brand-title">Chủ đề 1<br><span>Máy tính &amp; Xã hội tri thức</span></div>
+    <div class="brand-sub">Kết nối tri thức với cuộc sống · bản cập nhật 8/2026</div>
+  </div>
+  <div class="toc-title">Nội dung bài học</div>
+  <nav class="toc">
+    <a href="#cover" class="active" onclick="setActive(this)">📖 Giới thiệu bài</a>
+    <a href="#khai-niem" onclick="setActive(this)">1. Khái niệm về AI</a>
+    <a href="#dac-trung" onclick="setActive(this)">   Đặc trưng của AI</a>
+    <a href="#phan-loai" onclick="setActive(this)">   Phân loại AI</a>
+    <a href="#ung-dung" onclick="setActive(this)">2. Ứng dụng của AI</a>
+    <a href="#mycin" onclick="setActive(this)">   Hệ chuyên gia MYCIN</a>
+    <a href="#robot" onclick="setActive(this)">   Robot Asimo</a>
+    <a href="#google-dich" onclick="setActive(this)">   Google dịch</a>
+    <a href="#nhan-dang" onclick="setActive(this)">   Nhận dạng &amp; Trợ lí ảo</a>
+    <a href="#luyen-tap" onclick="setActive(this)">🏋️ Luyện tập</a>
+    <a href="#van-dung" onclick="setActive(this)">💡 Vận dụng</a>
+    <div style="height:1px;background:var(--border);margin:12px 4px"></div>
+    <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#a78bfa;font-weight:700;margin:8px 0 6px;padding:0 8px">🌟 Mở rộng · đến 8/2026</div>
+    <a href="#mo-rong-genai" onclick="setActive(this)">   AI Tạo sinh (GenAI)</a>
+    <a href="#mo-rong-coding" onclick="setActive(this)">   AI Lập trình</a>
+    <a href="#mo-rong-vietnam" onclick="setActive(this)">   🇻🇳 AI trong trường học VN</a>
+    <a href="So_do_tu_duy_Bai_01_AI.html" style="background:linear-gradient(135deg,rgba(99,102,241,0.25),rgba(168,85,247,0.25));color:#c084fc;border-left:3px solid #a855f7;font-weight:700;margin-top:10px">🧠 Sơ đồ tư duy AI</a>
+  </nav>
+  <div class="ctrl-box">
+    <h4>Tuỳ chỉnh hiển thị</h4>
+    <div class="ctrl-row">
+      <button class="ctrl-btn" onclick="changeFont(2)">A＋</button>
+      <button class="ctrl-btn" onclick="changeFont(-2)">A－</button>
+      <button class="ctrl-btn" onclick="toggleTheme()">☀/☾</button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+    <div style="font-size:12px; color:var(--muted); margin-top:6px; text-align:center" id="prog-label">Tiến độ đọc: 0%</div>
+  </div>
+</aside>
+
+
+<main class="main">
+  <div class="hero">
+    <div class="chu-de-tag">🖥 Chủ đề 1 · Máy tính và Xã hội tri thức</div>
+    <span class="update-tag">🕓 Cập nhật nội dung: 8/2026</span>
+    <h1>Làm quen với<br>Trí tuệ nhân tạo</h1>
+    <p class="hero-desc">Tin học 12 · Kết nối tri thức với cuộc sống &nbsp;|&nbsp; Bài 1 trong 28 bài học &nbsp;|&nbsp; Bản viết lại có bổ sung, minh hoạ mới</p>
+  </div>
+
+  <div class="goals-box">
+    <div class="goals-title">🎯 Sau bài học này em sẽ:</div>
+    <ul>
+      <li>Giải thích được sơ lược về khái niệm Trí tuệ nhân tạo.</li>
+      <li>Nêu được ví dụ minh hoạ cho một số ứng dụng điển hình của Trí tuệ nhân tạo.</li>
+    </ul>
+  </div>
+
+  <div class="nav-btns">
+    <button class="nav-btn" disabled>← Bài trước</button>
+    <button class="nav-btn" onclick="window.location.href='Bai_02_Tri_tue_nhan_tao_trong_khoa_hoc_va_doi_song.html'">Bài tiếp →</button>
+  </div>
+
+  <section class="section" id="cover" data-page="Trang 5">
+    <div class="bai-cover">
+      <div class="num-block"><div class="bai-num">BÀI</div><div class="bai-big">1</div></div>
+      <div class="info">
+        <div class="topic">Chủ đề 1 · Máy tính và Xã hội tri thức</div>
+        <div class="title">Làm quen với Trí tuệ nhân tạo</div>
+        <div class="subtitle">Artificial Intelligence – AI</div>
+      </div>
+    </div>
+
+    <div class="activity" id="khai-niem">
+      <div class="activity-badge">🤔 Khởi động</div>
+      <p>Em đã được nghe nói nhiều về <strong>Trí tuệ nhân tạo</strong> hay <strong>thông minh nhân tạo</strong> (AI – Artificial Intelligence). Có thể em đã từng nhờ ChatGPT, Google Gemini hay trợ lí ảo trên điện thoại làm giúp một việc gì đó. Hãy nêu một vài ví dụ về ứng dụng của AI mà em biết và từng dùng.</p>
+    </div>
+
+    <h2>1. KHÁI NIỆM VỀ AI</h2>
+
+    <div class="activity">
+      <div class="activity-badge">Hoạt động 1</div>
+      <strong>Tìm hiểu về AI</strong>
+      <p style="margin-top:10px">Khi nói tới AI, người ta cũng thường nói tới khả năng máy móc có thể thực hiện nhiều công việc một cách tự động. Tuy nhiên, không phải bất kì hệ thống tự động hoá nào cũng có thể được coi là AI. Trong các ví dụ dưới đây, những trường hợp nào <strong>không</strong> được coi là ứng dụng của AI? Tại sao?</p>
+      <ul style="margin-top:10px">
+        <li><strong>A.</strong> Ấm đun nước tự ngắt điện khi nước sôi.</li>
+        <li><strong>B.</strong> Tìm kiếm thông tin trên Internet nhờ máy tìm kiếm.</li>
+        <li><strong>C.</strong> Cửa ra vào ở một số siêu thị, nhà hàng hay văn phòng tự động mở khi có người tới gần.</li>
+        <li><strong>D.</strong> Những guồng nước (bánh xe nước) ở một số vùng quê như Kim Bôi, Hoà Bình; nhờ dòng chảy tự nhiên của khe suối hay kênh, ngòi; quay, chuyển nước lên các đường dẫn đi xa để phục vụ nhu cầu tưới tiêu hoặc sinh hoạt.</li>
+      </ul>
+    </div>
+
+    <p>Những hình dung mang tính chất huyền bí, thần thoại về "thông minh nhân tạo" đã có từ thời xa xưa. Ý nghĩa hiện đại của "thông minh nhân tạo" được gắn với khả năng của máy tính thực hiện các nhiệm vụ thông minh mà trước đây chỉ có con người mới có thể làm được. Tuy nhiên, việc đánh giá như thế nào là "thông minh" lại không đơn giản. Phải tới năm 1950, khi nhà khoa học nổi tiếng Alan Turing đưa ra phép thử, sau này được gọi là <em>"phép thử Turing"</em>, mới bước đầu có được cách để đánh giá khả năng của máy tính trong việc thể hiện hành vi thông minh.</p>
+
+    <p>Năm 1956, một hội thảo thu hút sự tham gia của nhiều nhà khoa học máy tính hàng đầu thế giới đã được tổ chức tại Đại học Dartmouth, bang New Hampshire, Mỹ. Với chủ đề trung tâm là phát triển máy tính có khả năng thực hiện các tác vụ thông minh, Hội thảo Dartmouth đã được coi là mốc ghi nhận sự ra đời của thuật ngữ AI, đánh dấu sự khởi đầu của lĩnh vực AI, thúc đẩy sự phát triển của lĩnh vực này trong các năm tiếp theo.</p>
+
+    <p>Có nhiều định nghĩa khác nhau về AI. Theo cách hiểu thông thường:</p>
+
+    <div class="img-full"><svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ mạng nơ-ron nhân tạo, biểu tượng của Trí tuệ nhân tạo">
+<defs>
+<linearGradient id="bgHero" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#0f2040"/><stop offset="0.55" stop-color="#0a1628"/><stop offset="1" stop-color="#131020"/>
+</linearGradient>
+<linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#38d9f5"/><stop offset="1" stop-color="#a78bfa"/>
+</linearGradient>
+<linearGradient id="nodeGrad2" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ff6b35"/><stop offset="1" stop-color="#ffd060"/>
+</linearGradient>
+</defs>
+<rect width="800" height="260" rx="18" fill="url(#bgHero)"/>
+<g stroke="#2a4468" stroke-width="1.4" opacity="0.85">
+<line x1="120" y1="70" x2="300" y2="55"/><line x1="120" y1="70" x2="300" y2="130"/><line x1="120" y1="70" x2="300" y2="200"/>
+<line x1="120" y1="130" x2="300" y2="55"/><line x1="120" y1="130" x2="300" y2="130"/><line x1="120" y1="130" x2="300" y2="200"/>
+<line x1="120" y1="190" x2="300" y2="55"/><line x1="120" y1="190" x2="300" y2="130"/><line x1="120" y1="190" x2="300" y2="200"/>
+<line x1="300" y1="55" x2="480" y2="90"/><line x1="300" y1="55" x2="480" y2="165"/>
+<line x1="300" y1="130" x2="480" y2="90"/><line x1="300" y1="130" x2="480" y2="165"/>
+<line x1="300" y1="200" x2="480" y2="90"/><line x1="300" y1="200" x2="480" y2="165"/>
+<line x1="480" y1="90" x2="650" y2="128"/><line x1="480" y1="165" x2="650" y2="128"/>
+</g>
+<g>
+<circle cx="120" cy="70" r="9" fill="url(#nodeGrad)"/><circle cx="120" cy="130" r="9" fill="url(#nodeGrad)"/><circle cx="120" cy="190" r="9" fill="url(#nodeGrad)"/>
+<circle cx="300" cy="55" r="7" fill="#7ce8fa"/><circle cx="300" cy="130" r="7" fill="#7ce8fa"/><circle cx="300" cy="200" r="7" fill="#7ce8fa"/>
+<circle cx="480" cy="90" r="7" fill="url(#nodeGrad2)"/><circle cx="480" cy="165" r="7" fill="url(#nodeGrad2)"/>
+<circle cx="650" cy="128" r="12" fill="url(#nodeGrad2)"/>
+</g>
+<text x="650" y="133" text-anchor="middle" font-size="13" font-weight="800" fill="#1a0a00" font-family="Inter,Arial,sans-serif">AI</text>
+<text x="90" y="235" font-size="14" fill="#7ce8fa" font-family="Inter,Arial,sans-serif" opacity="0.8">Dữ liệu đầu vào</text>
+<text x="560" y="235" font-size="14" fill="#ffd060" font-family="Inter,Arial,sans-serif" opacity="0.8">Kết quả / quyết định</text>
+</svg></div>
+    <div class="img-caption">Minh hoạ mạng nơ-ron nhân tạo: dữ liệu đầu vào được xử lí qua nhiều lớp để đưa ra kết quả – nguyên lí nền tảng của nhiều hệ thống AI hiện nay</div>
+
+    <div class="callout">
+      <em>AI là khả năng của máy tính có thể làm những công việc mang tính trí tuệ của con người như đọc chữ, hiểu tiếng nói, dịch thuật, lái xe hay khả năng học và ra quyết định,...</em>
+    </div>
+
+    <p>Ở đây, có thể hiểu "công việc mang tính trí tuệ" là công việc khi thực hiện đòi hỏi quá trình trí tuệ đặc trưng của con người, như khả năng suy luận, khái quát hoá, ra quyết định,... Mục tiêu của việc phát triển ứng dụng AI là nhằm xây dựng các phần mềm giúp máy tính có được những đặc trưng trí tuệ như con người.</p>
+
+    <div class="page-num">Trang 5</div>
+  </section>
+
+  <section class="section" id="dac-trung" data-page="Trang 6">
+    <h3>Một số đặc trưng cơ bản của AI</h3>
+    <p>Một số đặc trưng cơ bản của AI thường được nói tới nhiều nhất đó là các <strong>khả năng học, suy luận, nhận thức, hiểu ngôn ngữ và giải quyết vấn đề.</strong></p>
+
+    <div class="img-full"><svg viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Năm đặc trưng cơ bản của Trí tuệ nhân tạo: học, suy luận, nhận thức, hiểu ngôn ngữ, giải quyết vấn đề">
+<defs><linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1b2e"/><stop offset="1" stop-color="#0a1220"/></linearGradient></defs>
+<rect width="800" height="220" rx="18" fill="url(#fbg)"/>
+<g font-family="Inter,Arial,sans-serif">
+<!-- 5 hexagon nodes -->
+<g transform="translate(90,110)"><circle r="42" fill="none" stroke="#38d9f5" stroke-width="2.5"/><text y="8" text-anchor="middle" font-size="30">📚</text><text y="66" text-anchor="middle" font-size="13" fill="#7ce8fa" font-weight="700">Học</text></g>
+<g transform="translate(240,70)"><circle r="42" fill="none" stroke="#a78bfa" stroke-width="2.5"/><text y="8" text-anchor="middle" font-size="30">🧠</text><text y="66" text-anchor="middle" font-size="13" fill="#c4b5fd" font-weight="700">Suy luận</text></g>
+<g transform="translate(400,140)"><circle r="42" fill="none" stroke="#56e39f" stroke-width="2.5"/><text y="8" text-anchor="middle" font-size="30">👁️</text><text y="66" text-anchor="middle" font-size="13" fill="#8ef0c0" font-weight="700">Nhận thức</text></g>
+<g transform="translate(560,70)"><circle r="42" fill="none" stroke="#ff6b35" stroke-width="2.5"/><text y="8" text-anchor="middle" font-size="30">💬</text><text y="66" text-anchor="middle" font-size="13" fill="#ff9a64" font-weight="700">Hiểu ngôn ngữ</text></g>
+<g transform="translate(700,110)"><circle r="42" fill="none" stroke="#ffd060" stroke-width="2.5"/><text y="8" text-anchor="middle" font-size="30">⚙️</text><text y="66" text-anchor="middle" font-size="13" fill="#ffe19a" font-weight="700">Giải quyết vấn đề</text></g>
+<path d="M90,110 L240,70 L400,140 L560,70 L700,110" stroke="#2a4468" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+</g>
+</svg></div>
+    <div class="img-caption">Năm đặc trưng trí tuệ cơ bản mà một ứng dụng AI có thể kết hợp ở các mức độ khác nhau</div>
+
+    <div class="feature-item">
+      <div class="feature-icon">📚</div>
+      <div><div class="feature-title">Khả năng học</div>
+      <div class="feature-desc">Khả năng nắm bắt thông tin từ dữ liệu và điều chỉnh hành vi dựa trên thông tin mới. Ví dụ, hệ thống khuyến nghị tích hợp trên YouTube có thể học từ lịch sử xem video ca nhạc và đề xuất các video mới dựa trên sở thích của từng người dùng cụ thể.</div></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🧠</div>
+      <div><div class="feature-title">Khả năng suy luận</div>
+      <div class="feature-desc">Khả năng vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận. Ví dụ, hệ thống chẩn đoán y tế dựa trên AI có thể dựa vào tri thức về các triệu chứng và bệnh lí để đưa ra chẩn đoán tình trạng sức khoẻ của người bệnh.</div></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">👁️</div>
+      <div><div class="feature-title">Khả năng nhận thức</div>
+      <div class="feature-desc">Khả năng cảm nhận và hiểu biết môi trường xung quanh thông qua các cảm biến và dữ liệu đầu vào. Ví dụ, máy tính điều khiển xe tự lái sử dụng cảm biến radar và camera để phát hiện và nhận biết xe xung quanh, các chướng ngại vật, biển báo giao thông và người đi bộ trên đường.</div></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💬</div>
+      <div><div class="feature-title">Khả năng hiểu ngôn ngữ</div>
+      <div class="feature-desc">Hiểu và xử lí ngôn ngữ tự nhiên của con người, bao gồm cả việc hiểu văn bản và tiếng nói. Ví dụ, các máy tìm kiếm thông tin trên Internet như Google, Bing, hay các trợ lí AI trò chuyện như ChatGPT, Gemini có thể hiểu yêu cầu tra cứu của người dùng được đưa vào bằng văn bản hay bằng tiếng nói.</div></div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⚙️</div>
+      <div><div class="feature-title">Khả năng giải quyết vấn đề</div>
+      <div class="feature-desc">Khả năng tìm ra cách giải quyết các tình huống phức tạp dựa trên thông tin và tri thức. Ví dụ, hệ thống dự báo thời tiết sử dụng mô hình dự báo dựa trên dữ liệu thời tiết trước đây để đưa ra bản tin dự báo thời tiết cho thời gian tới.</div></div>
+    </div>
+
+    <div class="info-box">
+      <p>Bất kì ứng dụng AI nào cũng đều cần có sự kết hợp ở các mức độ khác nhau một số đặc trưng trí tuệ nêu trên. Điều này tạo nên sự khác biệt giữa AI và tự động hoá. Các hệ thống tự động hoá như các dây chuyền lắp ráp, các robot cơ giới hoá chỉ thực hiện lặp đi lặp lại một vài thao tác cố định và đơn điệu, mặc dù có thể đạt được hiệu suất cao trong nhiều công việc cụ thể, nhưng đều <strong>không</strong> được coi là các hệ thống có ứng dụng AI.</p>
+    </div>
+
+    <h3 id="phan-loai">Phân loại AI</h3>
+    <p>Theo năng lực, có thể chia AI thành hai loại chính:</p>
+    <div class="ai-types">
+      <div class="ai-card"><div class="ai-card-title">🔧 Trí tuệ nhân tạo hẹp <br><em>(AI yếu)</em></div>
+      <p>Được thiết kế để thực hiện <strong>một nhiệm vụ cụ thể</strong>. Ví dụ: chương trình máy tính chơi cờ, nhận dạng khuôn mặt hoặc thực hiện dự báo thời tiết. Phần lớn ứng dụng AI đang dùng hiện nay – kể cả các trợ lí AI trò chuyện – vẫn thuộc loại này.</p></div>
+      <div class="ai-card"><div class="ai-card-title">🚀 Trí tuệ nhân tạo tổng quát <br><em>(AI mạnh)</em></div>
+      <p>Có khả năng <strong>tự học, tự thích nghi</strong> và thực hiện được nhiều công việc giống như con người. Đây đang là mục tiêu dài hạn của các nghiên cứu về AI, trong thực tế hiện vẫn chưa đạt được.</p></div>
+    </div>
+
+    <div class="cau-hoi"><div class="q-num">1</div><div class="q-text">Hãy nêu một số đặc trưng chính của AI.</div></div>
+    <div class="cau-hoi"><div class="q-num">2</div><div class="q-text">Các phần mềm dịch máy, kiểm tra lỗi chính tả có thể coi là các ứng dụng AI hay không? Tại sao?</div></div>
+
+    <div class="page-num">Trang 6</div>
+  </section>
+
+  <section class="section" id="ung-dung" data-page="Trang 7">
+    <h2>2. MỘT SỐ ỨNG DỤNG CỦA AI</h2>
+    <div class="activity">
+      <div class="activity-badge">Hoạt động 2</div>
+      <strong>Tìm hiểu một số ứng dụng của AI trong thực tế</strong>
+      <p style="margin-top:10px">Hãy cùng trao đổi về một số ứng dụng của AI trong thực tế mà em biết.</p>
+    </div>
+    <p>Ngoài các ứng dụng được nêu trong phần trên, AI còn có nhiều các ứng dụng thực tế khác. Phần tiếp theo dưới đây giới thiệu thêm vài ứng dụng AI tiêu biểu.</p>
+
+    <h3 id="mycin">🏥 Hệ chuyên gia MYCIN</h3>
+    <div class="img-full"><svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ hoạt động hệ chuyên gia MYCIN: triệu chứng, luật suy diễn, kết luận">
+<defs><linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1f2e"/><stop offset="1" stop-color="#0a1420"/></linearGradient></defs>
+<rect width="800" height="260" rx="18" fill="url(#mbg)"/>
+<g font-family="Inter,Arial,sans-serif">
+<rect x="40" y="90" width="180" height="80" rx="14" fill="#111a2e" stroke="#38d9f5" stroke-width="2"/>
+<text x="130" y="122" text-anchor="middle" font-size="26">🩺</text>
+<text x="130" y="148" text-anchor="middle" font-size="13" fill="#7ce8fa" font-weight="700">Triệu chứng</text>
+<text x="130" y="164" text-anchor="middle" font-size="11" fill="#8899b8">Bác sĩ trả lời có/không</text>
+<path d="M220,130 L320,130" stroke="#56e39f" stroke-width="2.5" marker-end="url(#arrM)"/>
+<rect x="320" y="70" width="200" height="120" rx="14" fill="#111a2e" stroke="#56e39f" stroke-width="2"/>
+<text x="420" y="105" text-anchor="middle" font-size="24">📖</text>
+<text x="420" y="130" text-anchor="middle" font-size="13" fill="#8ef0c0" font-weight="700">~600 luật suy diễn</text>
+<text x="420" y="150" text-anchor="middle" font-size="11" fill="#8899b8">"Nếu A1, A2… thì B"</text>
+<text x="420" y="168" text-anchor="middle" font-size="11" fill="#8899b8">(tri thức chuyên gia y khoa)</text>
+<path d="M520,130 L620,130" stroke="#ff6b35" stroke-width="2.5" marker-end="url(#arrM)"/>
+<rect x="620" y="90" width="150" height="80" rx="14" fill="#111a2e" stroke="#ff6b35" stroke-width="2"/>
+<text x="695" y="122" text-anchor="middle" font-size="26">💊</text>
+<text x="695" y="148" text-anchor="middle" font-size="13" fill="#ff9a64" font-weight="700">Đề xuất kháng sinh</text>
+<text x="695" y="164" text-anchor="middle" font-size="10.5" fill="#8899b8">kèm liều lượng</text>
+<defs><marker id="arrM" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#56e39f"/></marker></defs>
+<text x="400" y="230" text-anchor="middle" font-size="12.5" fill="#5f7a9c">Stanford, 1972 · một trong những hệ chuyên gia y khoa đầu tiên</text>
+</g>
+</svg></div>
+    <div class="img-caption">Sơ đồ nguyên lí hoạt động của hệ chuyên gia MYCIN</div>
+    <p><strong>Hệ chuyên gia</strong>, còn được gọi là hệ thống dựa trên tri thức, là một chương trình máy tính, được thiết kế để mô phỏng khả năng ra quyết định của một hoặc nhiều chuyên gia trong một lĩnh vực cụ thể. Một trong những hệ chuyên gia phổ biến đầu tiên trong lĩnh vực y học là <strong>MYCIN</strong>, được bắt đầu phát triển tại Đại học Stanford (Mỹ) từ năm 1972.</p>
+    <p>Các tri thức cơ sở của MYCIN bao gồm khoảng 600 luật suy diễn. Các luật này thực chất là các mệnh đề dạng <em>"nếu có các triệu chứng A1, A2,... thì có kết luận B"</em>. Người dùng nhập câu trả lời cho một loạt các câu hỏi dạng "có" hoặc "không" và các câu hỏi dạng trả lời ngắn gọn. Trên cơ sở đó, MYCIN đưa ra một danh sách các vi khuẩn có khả năng là thủ phạm gây ra nhiễm trùng máu với liều lượng kháng sinh thích hợp.</p>
+    <p>Đây là một trong những ví dụ đầu tiên về việc ứng dụng của AI trong y học và chẩn đoán bệnh. Mặc dù không sử dụng các kĩ thuật Học máy – một lĩnh vực của AI đang phát triển hết sức mạnh mẽ, MYCIN vẫn được coi là một bước quan trọng đối với sự hiểu biết và phát triển trong lĩnh vực này. Các hệ thống AI hỗ trợ chẩn đoán ngày nay (ví dụ trong đọc phim X-quang, phát hiện sớm một số bệnh ung thư) đã phát triển xa hơn nhiều so với MYCIN, chủ yếu nhờ kĩ thuật Học máy trên khối lượng dữ liệu y tế rất lớn.</p>
+
+    <h3 id="robot">🤖 Robot Asimo</h3>
+    <div class="img-full"><svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ robot hình người tích hợp AI: di chuyển, thị giác máy, nhận dạng tiếng nói">
+<defs><linearGradient id="rbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1a2e"/><stop offset="1" stop-color="#0a1220"/></linearGradient>
+<linearGradient id="rbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe8f5"/><stop offset="1" stop-color="#9fb3cc"/></linearGradient></defs>
+<rect width="800" height="260" rx="18" fill="url(#rbg)"/>
+<!-- robot silhouette, generic humanoid, center -->
+<g transform="translate(400,20)">
+  <circle cx="0" cy="38" r="30" fill="url(#rbody)" stroke="#1e2f4d" stroke-width="2"/>
+  <circle cx="-11" cy="34" r="6" fill="#38d9f5"/><circle cx="11" cy="34" r="6" fill="#38d9f5"/>
+  <rect x="-6" y="50" width="12" height="6" rx="3" fill="#5f7a9c"/>
+  <rect x="-38" y="70" width="76" height="86" rx="16" fill="url(#rbody)" stroke="#1e2f4d" stroke-width="2"/>
+  <circle cx="0" cy="105" r="14" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <rect x="-70" y="80" width="26" height="70" rx="12" fill="url(#rbody)" stroke="#1e2f4d" stroke-width="2"/>
+  <rect x="44" y="80" width="26" height="70" rx="12" fill="url(#rbody)" stroke="#1e2f4d" stroke-width="2"/>
+  <rect x="-30" y="150" width="24" height="66" rx="11" fill="url(#rbody)" stroke="#1e2f4d" stroke-width="2"/>
+  <rect x="6" y="150" width="24" height="66" rx="11" fill="url(#rbody)" stroke="#1e2f4d" stroke-width="2"/>
+</g>
+<g font-family="Inter,Arial,sans-serif">
+<g transform="translate(80,60)">
+  <circle r="26" fill="none" stroke="#38d9f5" stroke-width="2.5"/><text y="7" text-anchor="middle" font-size="20">🚶</text>
+  <text y="46" text-anchor="middle" font-size="12.5" fill="#7ce8fa" font-weight="700">Di chuyển 2 chân</text>
+  <text y="62" text-anchor="middle" font-size="10.5" fill="#8899b8">tự động điều khiển</text>
+</g>
+<g transform="translate(80,180)">
+  <circle r="26" fill="none" stroke="#a78bfa" stroke-width="2.5"/><text y="7" text-anchor="middle" font-size="20">👁️</text>
+  <text y="46" text-anchor="middle" font-size="12.5" fill="#c4b5fd" font-weight="700">Thị giác máy</text>
+  <text y="62" text-anchor="middle" font-size="10.5" fill="#8899b8">nhận dạng hình ảnh</text>
+</g>
+<g transform="translate(720,60)">
+  <circle r="26" fill="none" stroke="#ffd060" stroke-width="2.5"/><text y="7" text-anchor="middle" font-size="20">🗣️</text>
+  <text y="46" text-anchor="middle" font-size="12.5" fill="#ffe19a" font-weight="700">Nhận dạng tiếng nói</text>
+  <text y="62" text-anchor="middle" font-size="10.5" fill="#8899b8">chào hỏi tự nhiên</text>
+</g>
+<g transform="translate(720,180)">
+  <circle r="26" fill="none" stroke="#56e39f" stroke-width="2.5"/><text y="7" text-anchor="middle" font-size="20">⚙️</text>
+  <text y="46" text-anchor="middle" font-size="12.5" fill="#8ef0c0" font-weight="700">Điều khiển vận động</text>
+  <text y="62" text-anchor="middle" font-size="10.5" fill="#8899b8">giữ thăng bằng</text>
+</g>
+</g>
+</svg></div>
+    <div class="img-caption">Bốn ứng dụng AI tiêu biểu được tích hợp trên một robot hình người</div>
+    <div style="background:rgba(56,217,245,.06);border:1px dashed rgba(56,217,245,.3);border-radius:12px;padding:16px 18px;margin:18px 0">
+      <div style="color:var(--cyan2);font-weight:700;margin-bottom:8px">Thông số Robot Asimo</div>
+      <ul style="margin:0;padding-left:18px;column-count:2;column-gap:24px">
+        <li style="color:#b8d8f0;font-size:14.5px;margin-bottom:6px">Xuất hiện lần đầu: <strong>1986</strong></li>
+        <li style="color:#b8d8f0;font-size:14.5px;margin-bottom:6px">Sản xuất bởi: <strong>Honda (Nhật Bản)</strong></li>
+        <li style="color:#b8d8f0;font-size:14.5px;margin-bottom:6px">Di chuyển: bằng <strong>hai chân</strong></li>
+        <li style="color:#b8d8f0;font-size:14.5px;margin-bottom:6px">Tích hợp: nhận dạng khuôn mặt, giọng nói</li>
+        <li style="color:#b8d8f0;font-size:14.5px">Ứng dụng AI: tự động điều khiển, thị giác máy</li>
+      </ul>
+    </div>
+    <p>Các robot thông minh được coi là ứng dụng điển hình của AI trong lĩnh vực điều khiển. Nhiều loại robot công nghiệp được trang bị kĩ thuật Học máy để thích ứng và hoạt động trong môi trường sản xuất, thực hiện các nhiệm vụ cơ khí và kiểm tra chất lượng sản phẩm.</p>
+    <div class="info-box">
+      <p>Một số robot có hình dạng tương tự con người, được tạo ra để chứng minh khả năng của kĩ thuật robot thay vì hướng vào ứng dụng cụ thể. Ví dụ tiêu biểu có thể kể tới đó là <strong>Robot Asimo</strong> của hãng Honda, xuất hiện lần đầu vào năm 1986. Đây là robot hình người đầu tiên trên thế giới được tích hợp một loạt ứng dụng AI như: tự động điều khiển (có khả năng di chuyển bằng hai chân), nhận dạng hình ảnh (có thị giác máy để "nhìn thấy"), nhận dạng tiếng nói (biết chào hỏi bằng ngôn ngữ tự nhiên).</p>
+      <p>Asimo từng tham gia mở cửa Sàn giao dịch chứng khoán New York vào năm 2002, làm nhạc trưởng điều khiển dàn nhạc giao hưởng Detroit năm 2008, chơi bóng cùng cựu Tổng thống Mỹ Obama năm 2014,... Honda đã dừng phát triển Asimo từ năm 2018 để tập trung nguồn lực sang các dòng robot ứng dụng thực tế hơn, nhưng Asimo vẫn được nhắc tới như biểu tượng khởi đầu cho làn sóng robot hình người tích hợp AI hiện nay.</p>
+    </div>
+    <div class="page-num">Trang 7</div>
+  </section>
+
+  <section class="section" id="google-dich" data-page="Trang 8">
+    <h3>🌐 Google dịch (Google Translate)</h3>
+    <p>Google Dịch là một dịch vụ dịch thuật miễn phí do Google phát triển, ra mắt vào tháng 4 năm 2006. Phiên bản hiện nay cho phép dịch nhiều dạng văn bản như các từ, cụm từ, tệp văn bản, trang web. Nó có thể truy cập qua một ứng dụng web độc lập, thậm chí được tích hợp vào trình duyệt, giúp nhận dạng và đọc văn bản, tự động phát hiện ngôn ngữ, nhận ra các từ trong hình ảnh và phiên dịch tức thời. Những năm gần đây, chất lượng dịch được cải thiện đáng kể nhờ kĩ thuật mạng nơ-ron, và các mô hình ngôn ngữ lớn (như trong ChatGPT, Gemini) cũng ngày càng được dùng để hỗ trợ dịch thuật theo ngữ cảnh.</p>
+
+    <h3 id="nhan-dang">🎭 Nhận dạng khuôn mặt</h3>
+    <div class="img-full"><svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ công nghệ nhận dạng khuôn mặt: các điểm mốc trên khuôn mặt được AI phân tích">
+<defs><linearGradient id="fcbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e1a2e"/><stop offset="1" stop-color="#0a1220"/></linearGradient></defs>
+<rect width="800" height="240" rx="18" fill="url(#fcbg)"/>
+<g transform="translate(400,120)">
+<rect x="-110" y="-95" width="220" height="190" rx="20" fill="none" stroke="#38d9f5" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="-108" cy="-93" r="0" /><path d="M-110,-75 L-110,-95 L-90,-95" stroke="#38d9f5" stroke-width="3" fill="none"/>
+<path d="M90,-95 L110,-95 L110,-75" stroke="#38d9f5" stroke-width="3" fill="none"/>
+<path d="M-110,75 L-110,95 L-90,95" stroke="#38d9f5" stroke-width="3" fill="none"/>
+<path d="M110,75 L110,95 L90,95" stroke="#38d9f5" stroke-width="3" fill="none"/>
+<ellipse cx="0" cy="0" rx="72" ry="90" fill="#1a2540" stroke="#3a5a82" stroke-width="1.5"/>
+<circle cx="-28" cy="-18" r="7" fill="#a78bfa"/><circle cx="28" cy="-18" r="7" fill="#a78bfa"/>
+<circle cx="0" cy="14" r="6" fill="#ff9a64"/>
+<path d="M-26,50 Q0,68 26,50" stroke="#56e39f" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g stroke="#38d9f5" stroke-width="1" opacity="0.7">
+<line x1="-28" y1="-18" x2="0" y2="14"/><line x1="28" y1="-18" x2="0" y2="14"/><line x1="-28" y1="-18" x2="28" y2="-18"/>
+<line x1="0" y1="14" x2="-26" y2="50"/><line x1="0" y1="14" x2="26" y2="50"/>
+</g>
+<circle cx="-28" cy="-18" r="2.5" fill="#7ce8fa"/><circle cx="28" cy="-18" r="2.5" fill="#7ce8fa"/><circle cx="0" cy="14" r="2.5" fill="#7ce8fa"/><circle cx="-26" cy="50" r="2.5" fill="#7ce8fa"/><circle cx="26" cy="50" r="2.5" fill="#7ce8fa"/>
+</g>
+</svg></div>
+    <div class="img-caption">AI phân tích các điểm mốc trên khuôn mặt để xác định danh tính</div>
+    <p>AI có thể nhận dạng và xác định danh tính dựa trên hình ảnh khuôn mặt. Nhiều ứng dụng thực tế đã được triển khai rộng rãi nhờ khả năng này. Từ việc mở khoá điện thoại cho tới việc kiểm tra an ninh để xác định nhân vật trong ảnh hoặc video,... Nhiều mạng xã hội và ứng dụng ảnh cũng dùng nhận dạng khuôn mặt để gán nhãn tên khá chính xác những người quen xuất hiện trong ảnh người dùng đưa lên.</p>
+
+    <h3>✍️ Nhận dạng chữ viết tay</h3>
+    <p>Sự phát triển của AI đã giúp chuyển đổi hình ảnh chữ viết tay thành dữ liệu văn bản có thể xử lí được. Hiện tại, công nghệ này được sử dụng rộng rãi trong quá trình xử lí hoá đơn và các tài liệu khác trong giao dịch thương mại điện tử, tự động hoá quy trình nhập dữ liệu. Nó cũng được sử dụng để nhận dạng và xác minh chữ kí trong các giao dịch điện tử.</p>
+
+    <h3>🤖 Trợ lí ảo</h3>
+    <div class="img-full"><svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ trợ lí ảo: micro nhận giọng nói và trả lời bằng bong bóng chat">
+<defs><linearGradient id="abg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e1a2e"/><stop offset="1" stop-color="#0a1220"/></linearGradient></defs>
+<rect width="800" height="240" rx="18" fill="url(#abg)"/>
+<g transform="translate(180,120)">
+<rect x="-28" y="-70" width="56" height="90" rx="28" fill="#111a2e" stroke="#ff6b35" stroke-width="2.5"/>
+<line x1="0" y1="20" x2="0" y2="46" stroke="#ff6b35" stroke-width="3"/>
+<line x1="-22" y1="46" x2="22" y2="46" stroke="#ff6b35" stroke-width="3"/>
+<path d="M-40,-10 a40,40 0 0 0 80,0" stroke="#ff9a64" stroke-width="3" fill="none"/>
+<g stroke="#ffd060" stroke-width="2.5" opacity="0.85">
+<path d="M55,-30 q15,30 0,60"/><path d="M75,-42 q26,42 0,84"/><path d="M95,-54 q38,54 0,108"/>
+</g>
+</g>
+<g transform="translate(470,80)">
+<rect x="0" y="0" width="260" height="64" rx="18" fill="#111a2e" stroke="#38d9f5" stroke-width="2"/>
+<path d="M18,64 l-16,20 l30,-8 z" fill="#111a2e" stroke="#38d9f5" stroke-width="2"/>
+<text x="130" y="30" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13.5" fill="#7ce8fa" font-weight="700">"Đặt báo thức 6 giờ sáng"</text>
+<text x="130" y="50" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" fill="#8899b8">Google Assistant · Siri · Bixby · Cortana</text>
+</g>
+<g transform="translate(470,168)">
+<rect x="0" y="0" width="230" height="50" rx="16" fill="#0f2a20" stroke="#56e39f" stroke-width="2"/>
+<text x="115" y="31" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" fill="#8ef0c0" font-weight="700">✓ Đã đặt báo thức 6:00</text>
+</g>
+</svg></div>
+    <div class="img-caption">Trợ lí ảo nhận lệnh bằng giọng nói và thực hiện yêu cầu</div>
+    <p>Một trong số những ứng dụng thú vị và hữu ích của AI là các phần mềm được gọi tên chung là <strong>"Trợ lí ảo"</strong> như Google Assistant của Google, Siri của Apple, Bixby của Samsung, Cortana của Microsoft. Các trợ lí ảo này có thể trò chuyện, hỗ trợ nhiều tính năng thông minh như tìm kiếm thông tin, gọi điện thoại theo tên có trong danh bạ, đọc tin nhắn, mở nhạc,... bằng chính tiếng nói của người dùng. Gần đây, nhiều trợ lí ảo được nâng cấp bằng công nghệ AI tạo sinh (như Google Assistant tích hợp Gemini) để trò chuyện tự nhiên và trả lời câu hỏi phức tạp hơn.</p>
+
+    <div class="app-grid">
+      <div class="app-card"><div class="icon">🏥</div><div class="app-name">Hệ chuyên gia MYCIN</div><p>Chẩn đoán bệnh, tư vấn kháng sinh dựa trên 600 luật suy diễn y tế.</p></div>
+      <div class="app-card"><div class="icon">🤖</div><div class="app-name">Robot Asimo</div><p>Robot hình người đầu tiên tích hợp AI: đi bộ, nhận dạng khuôn mặt, hiểu tiếng nói.</p></div>
+      <div class="app-card"><div class="icon">🌐</div><div class="app-name">Google Dịch</div><p>Dịch thuật tự động hàng trăm ngôn ngữ, nhận dạng văn bản trong hình ảnh.</p></div>
+      <div class="app-card"><div class="icon">🎤</div><div class="app-name">Trợ lí ảo</div><p>Siri, Google Assistant, Cortana, Bixby – trò chuyện và hỗ trợ bằng giọng nói.</p></div>
+    </div>
+
+    <div class="ghi-nho">
+      <div class="ghi-nho-title">📌 Ghi nhớ</div>
+      <p>Ngày nay, các ứng dụng AI đang trở thành phổ biến trong nhiều lĩnh vực khác nhau. Có thể kể ra những ví dụ tiêu biểu như: điều khiển robot, chẩn đoán bệnh, dịch tự động, nhận dạng khuôn mặt, trợ lí ảo,...</p>
+    </div>
+
+    <div class="cau-hoi"><div class="q-num">?</div><div class="q-text">Hãy mô tả sơ bộ chức năng hoạt động của một trong số các ứng dụng AI được nêu ở trên.</div></div>
+
+    <h2 id="luyen-tap" style="margin-top:32px">🏋️ LUYỆN TẬP</h2>
+    <div class="tag-luyen">🏋️ Luyện tập</div>
+    <div class="cau-hoi"><div class="q-num">1</div><div class="q-text">Những năng lực trí tuệ nào được thể hiện trong các ứng dụng dịch máy và trợ lí ảo?</div></div>
+
+    <h2 id="van-dung" style="margin-top:28px">💡 VẬN DỤNG</h2>
+    <div class="tag-van-dung">💡 Vận dụng</div>
+    <div class="cau-hoi"><div class="q-num">★</div><div class="q-text">Hãy truy cập Internet để tìm hiểu về khả năng của các trợ lí ảo Siri (Apple), Cortana (Microsoft), Google Assistant (Google) tích hợp Gemini,... và so sánh các khả năng đó với những đặc trưng trí tuệ của AI đã học.</div></div>
+
+    <div class="page-num">Trang 8</div>
+  </section>
+
+  <div class="nav-btns">
+    <button class="nav-btn" disabled>← Bài trước</button>
+    <button class="nav-btn" onclick="window.location.href='Bai_02_Tri_tue_nhan_tao_trong_khoa_hoc_va_doi_song.html'">Bài 2: Trí tuệ nhân tạo trong KH và đời sống →</button>
+  </div>
+
+  <div class="mo-rong-section" id="mo-rong-genai">
+    <div class="mo-rong-header">
+      <div>
+        <div class="mo-rong-badge">🌟 Ngoài SGK · Tham khảo</div>
+        <div class="mo-rong-header-title">Mở rộng: AI từ năm 2022 đến tháng 8/2026</div>
+        <div class="mo-rong-header-sub">Kiến thức cập nhật – không nằm trong chương trình thi chính thức</div>
+      </div>
+    </div>
+    <div class="mo-rong-body">
+      <div class="mo-rong-note">⚠️ <span>Phần này <strong>bổ sung kiến thức thực tế</strong> về AI hiện đại, giúp em hiểu thế giới xung quanh. Nội dung <strong>không có trong SGK</strong> và không được kiểm tra trong các bài thi chính thức.</span></div>
+
+      <h2 style="color:#e9d5ff;margin-top:0"><span style="color:#a78bfa">■</span> AI Tạo sinh (Generative AI)</h2>
+      <div class="img-full"><svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ mô hình ngôn ngữ lớn: văn bản đầu vào được AI xử lí thành nhiều dạng đầu ra">
+<defs><linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#150f28"/><stop offset="1" stop-color="#0a0f22"/></linearGradient></defs>
+<rect width="800" height="260" rx="18" fill="url(#lbg)"/>
+<g font-family="Inter,Arial,sans-serif">
+<rect x="40" y="100" width="170" height="60" rx="14" fill="#1a1530" stroke="#a78bfa" stroke-width="2"/>
+<text x="125" y="135" text-anchor="middle" font-size="13" fill="#e9d5ff" font-weight="700">"Viết cho tôi…"</text>
+<text x="125" y="151" text-anchor="middle" font-size="10.5" fill="#a090c0">câu lệnh ngôn ngữ tự nhiên</text>
+<path d="M210,130 L300,130" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#arrL)"/>
+<circle cx="380" cy="130" r="70" fill="none" stroke="#a78bfa" stroke-width="2"/>
+<circle cx="380" cy="130" r="50" fill="none" stroke="#7c5cd6" stroke-width="1.5" stroke-dasharray="3 4"/>
+<text x="380" y="122" text-anchor="middle" font-size="12" fill="#c4b5fd" font-weight="800">MÔ HÌNH</text>
+<text x="380" y="140" text-anchor="middle" font-size="12" fill="#c4b5fd" font-weight="800">NGÔN NGỮ LỚN</text>
+<text x="380" y="156" text-anchor="middle" font-size="10" fill="#8a78b0">(LLM)</text>
+<path d="M450,110 L560,70" stroke="#38d9f5" stroke-width="2" marker-end="url(#arrL)"/>
+<path d="M450,130 L560,130" stroke="#ff6b35" stroke-width="2" marker-end="url(#arrL)"/>
+<path d="M450,150 L560,190" stroke="#56e39f" stroke-width="2" marker-end="url(#arrL)"/>
+<text x="575" y="75" font-size="13" fill="#7ce8fa">📝 Văn bản</text>
+<text x="575" y="135" font-size="13" fill="#ff9a64">💻 Mã lệnh</text>
+<text x="575" y="195" font-size="13" fill="#8ef0c0">🖼️ Hình ảnh, âm thanh…</text>
+<defs><marker id="arrL" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#a78bfa"/></marker></defs>
+</g>
+</svg></div>
+      <div class="img-caption">Mô hình ngôn ngữ lớn (LLM) – nền tảng của làn sóng AI tạo sinh 2022–2026</div>
+      <p style="color:#c0aee0">Kể từ năm 2022, AI đã bước vào một kỷ nguyên mới với sự xuất hiện của <strong style="color:#e9d5ff">AI Tạo sinh (Generative AI)</strong> – loại AI có khả năng tạo ra văn bản, hình ảnh, code, âm nhạc… chất lượng cao chỉ từ một dòng lệnh ngắn bằng tiếng tự nhiên. Đây vẫn là AI hẹp: mỗi mô hình được huấn luyện cho một số dạng nhiệm vụ nhất định, không phải AI tổng quát.</p>
+
+      <h3 style="color:#c4b5fd">Mốc lịch sử quan trọng</h3>
+      <div>
+        <div class="timeline-item"><div class="tl-year">2017</div><div class="tl-content"><div class="tl-title">Kiến trúc Transformer ra đời</div><div class="tl-desc">Google Brain công bố "Attention Is All You Need" – nền tảng của mọi LLM hiện đại.</div></div></div>
+        <div class="timeline-item"><div class="tl-year">2020</div><div class="tl-content"><div class="tl-title">GPT-3 (OpenAI)</div><div class="tl-desc">Mô hình 175 tỷ tham số – lần đầu viết văn bản khó phân biệt với người thật.</div></div></div>
+        <div class="timeline-item"><div class="tl-year">2022</div><div class="tl-content"><div class="tl-title">ChatGPT ra mắt</div><div class="tl-desc">OpenAI công bố ChatGPT cuối năm 2022 – phổ biến nhanh chưa từng có, đưa AI tạo sinh tới hàng trăm triệu người dùng phổ thông.</div></div></div>
+        <div class="timeline-item"><div class="tl-year">2023</div><div class="tl-content"><div class="tl-title">GPT-4, Gemini, Claude</div><div class="tl-desc">Cuộc đua AI bùng nổ: Google ra Gemini, Anthropic ra dòng Claude, nhiều hãng tích hợp trợ lí AI vào sản phẩm văn phòng.</div></div></div>
+        <div class="timeline-item"><div class="tl-year">2024</div><div class="tl-content"><div class="tl-title">AI Agent &amp; AI lập trình</div><div class="tl-desc">Các mô hình mới có khả năng tự lập kế hoạch, dùng công cụ, viết và sửa code như một trợ lí kĩ thuật.</div></div></div>
+        <div class="timeline-item"><div class="tl-year">8/2025</div><div class="tl-content"><div class="tl-title">GPT-5 (OpenAI)</div><div class="tl-desc">OpenAI phát hành GPT-5, hợp nhất nhiều dòng mô hình trước đó, cải thiện mạnh khả năng suy luận và lập trình.</div></div></div>
+        <div class="timeline-item"><div class="tl-year">11/2025</div><div class="tl-content"><div class="tl-title">Claude Opus 4.5 &amp; Gemini 3</div><div class="tl-desc">Anthropic ra mắt Claude Opus 4.5, Google ra mắt Gemini 3 – cả hai đều tập trung vào khả năng lập luận dài hơi và làm việc như một "agent" tự chủ.</div></div></div>
+        <div class="timeline-item tl-item-vn"><div class="tl-year">8/2026</div><div class="tl-content"><div class="tl-title">🇻🇳 Khung giáo dục AI cho học sinh phổ thông</div><div class="tl-desc">Bộ Giáo dục và Đào tạo ban hành khung nội dung giáo dục AI cho học sinh phổ thông (Quyết định 2422/QĐ-BGDĐT); triển khai đại trà từ năm học 2026–2027.</div></div></div>
+      </div>
+
+      <div class="vn-box" id="mo-rong-vietnam">
+        <div class="vn-title">🇻🇳 AI chính thức vào trường học Việt Nam từ năm học 2026–2027</div>
+        <p>Đúng thời điểm em học bài này, Bộ Giáo dục và Đào tạo đã ban hành <strong>Khung nội dung giáo dục trí tuệ nhân tạo cho học sinh phổ thông</strong> (Quyết định 2422/QĐ-BGDĐT, ban hành ngày 18/8/2026), làm cơ sở để các trường phổ thông trên cả nước triển khai đại trà nội dung giáo dục AI từ năm học 2026–2027.</p>
+        <ul>
+          <li><strong>Nội dung cốt lõi:</strong> khoảng 12 tiết/lớp/năm học, trang bị kiến thức AI cơ bản và thiết yếu – bài học em đang đọc chính là một phần nền tảng của mảng kiến thức này.</li>
+          <li><strong>Nội dung mở rộng:</strong> do từng trường tự bố trí thêm, nhằm phát triển năng lực sáng tạo, có thể qua chuyên đề riêng, lồng ghép vào các môn học, hoặc câu lạc bộ/hoạt động ngoài giờ.</li>
+        </ul>
+        <p style="margin-top:10px;font-size:13px;color:#c8a888"><em>Đây là chính sách giáo dục thực tế, không phải nội dung tri thức AI trong SGK – nêu ở đây để em thấy bài học này gắn với một chủ trương đang triển khai ngay trong năm học của mình.</em></p>
+      </div>
+
+      <h2 style="color:#e9d5ff;margin-top:32px" id="mo-rong-coding"><span style="color:#a78bfa">■</span> AI Lập trình – Coding Assistant</h2>
+      <div class="img-full"><svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh hoạ AI hỗ trợ lập trình: cửa sổ code với gợi ý được AI viết thêm">
+<defs><linearGradient id="cbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#131226"/><stop offset="1" stop-color="#0a0f22"/></linearGradient></defs>
+<rect width="800" height="260" rx="18" fill="url(#cbg)"/>
+<rect x="80" y="40" width="640" height="180" rx="14" fill="#0e0e1e" stroke="#2a2a4a" stroke-width="1.5"/>
+<circle cx="105" cy="60" r="6" fill="#ff6b6b"/><circle cx="125" cy="60" r="6" fill="#ffd060"/><circle cx="145" cy="60" r="6" fill="#56e39f"/>
+<g font-family="'Fira Code',Consolas,monospace" font-size="14">
+<text x="100" y="100" fill="#7ce8fa">function <tspan fill="#e9d5ff">tinhDiemTrungBinh</tspan>(diem) {</text>
+<text x="120" y="124" fill="#8ef0c0">return diem.reduce((a,b)=&gt;a+b) / diem.length;</text>
+<text x="100" y="148" fill="#7ce8fa">}</text>
+<rect x="95" y="160" width="420" height="26" rx="6" fill="rgba(167,139,250,.15)" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="105" y="178" fill="#c4b5fd" font-style="italic">✨ AI gợi ý: thêm kiểm tra mảng rỗng</text>
+</g>
+<g transform="translate(660,170)">
+<circle r="30" fill="#1a1530" stroke="#a78bfa" stroke-width="2.5"/>
+<text y="8" text-anchor="middle" font-size="24">🤖</text>
+</g>
+<path d="M550,172 L628,172" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrC)"/>
+<defs><marker id="arrC" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#a78bfa"/></marker></defs>
+</svg></div>
+      <div class="img-caption">AI lập trình – công cụ đang thay đổi cách viết phần mềm</div>
+      <p style="color:#c0aee0">Một trong những ứng dụng gây ảnh hưởng lớn nhất của AI hiện đại là <strong style="color:#e9d5ff">AI hỗ trợ lập trình</strong>. Thay vì chỉ gợi ý từ khoá như trước, AI nay có thể <em>hiểu yêu cầu bằng tiếng Việt</em>, viết chương trình theo yêu cầu, tìm và giải thích lỗi (debug), đọc hiểu cả một dự án phần mềm lớn.</p>
+
+      <div class="tool-grid">
+        <div class="tool-card"><div class="tool-logo">💻</div><div class="tool-name">Trợ lí lập trình tích hợp IDE</div><div class="tool-maker">GitHub Copilot, Gemini Code Assist, v.v.</div><p class="tool-desc">Các plugin AI gắn trực tiếp vào phần mềm soạn code (VS Code, JetBrains…), gợi ý dòng lệnh tiếp theo hoặc viết cả hàm chỉ từ một dòng chú thích.</p><div style="margin-top:10px"><span class="tool-tag tag-code">🔧 Plugin IDE</span><span class="tool-tag tag-chat">💡 Gợi ý theo ngữ cảnh</span></div></div>
+        <div class="tool-card"><div class="tool-logo">🧠</div><div class="tool-name">AI agent lập trình dòng lệnh</div><div class="tool-maker">Claude Code, Codex CLI, v.v.</div><p class="tool-desc">Công cụ chạy trong terminal, có thể tự đọc toàn bộ mã nguồn một dự án, sửa nhiều tệp cùng lúc, chạy thử và tự sửa lỗi – gần giống một lập trình viên hỗ trợ.</p><div style="margin-top:10px"><span class="tool-tag tag-new">🔥 Xu hướng 2025–2026</span><span class="tool-tag tag-code">🖥 Terminal / CLI</span></div></div>
+      </div>
+
+      <h2 style="color:#e9d5ff;margin-top:32px"><span style="color:#a78bfa">■</span> Các AI trò chuyện phổ biến hiện nay</h2>
+      <div class="tool-grid">
+        <div class="tool-card"><div class="tool-logo">💬</div><div class="tool-name">ChatGPT</div><div class="tool-maker">OpenAI</div><p class="tool-desc">Một trong những ứng dụng AI tạo sinh phổ biến nhất thế giới. Phiên bản GPT-5 (8/2025) xử lí văn bản, hình ảnh và có khả năng suy luận nâng cao.</p></div>
+        <div class="tool-card"><div class="tool-logo">🤖</div><div class="tool-name">Claude</div><div class="tool-maker">Anthropic</div><p class="tool-desc">AI của công ty Anthropic, được đánh giá mạnh về lập trình và phân tích văn bản dài. Phiên bản Claude Opus 4.5 (11/2025) hướng tới làm việc như một "agent" tự chủ trong thời gian dài.</p></div>
+        <div class="tool-card"><div class="tool-logo">💎</div><div class="tool-name">Gemini</div><div class="tool-maker">Google DeepMind</div><p class="tool-desc">AI của Google, tích hợp sâu vào Tìm kiếm, Gmail, Docs và trợ lí ảo Google Assistant. Gemini 3 (11/2025) xử lí được tài liệu rất dài và nhiều dạng dữ liệu (văn bản, hình ảnh, âm thanh).</p></div>
+        <div class="tool-card"><div class="tool-logo">🦙</div><div class="tool-name">Mô hình mã nguồn mở</div><div class="tool-maker">Llama (Meta), Mistral, v.v.</div><p class="tool-desc">Các mô hình được công bố mở, có thể tải về và chạy trên máy tính cá nhân mà không cần kết nối Internet liên tục – phù hợp cho học tập, nghiên cứu.</p></div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(56,217,245,.05));border:1px solid rgba(167,139,250,.3);border-radius:16px;padding:22px 24px;margin-top:24px">
+        <div style="color:#e9d5ff;font-weight:800;font-size:17px;margin-bottom:14px">🌍 AI đang thay đổi thế giới như thế nào?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:14px"><div style="font-size:22px;margin-bottom:6px">👨‍💻</div><div style="color:#c4b5fd;font-weight:700;font-size:14px">Lập trình viên</div><div style="color:#a090c0;font-size:13.5px;margin-top:4px">AI hỗ trợ viết một phần đáng kể code trong nhiều dự án thực tế; công việc chuyển dần từ "tự viết từng dòng" sang "hướng dẫn và kiểm tra AI".</div></div>
+          <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:14px"><div style="font-size:22px;margin-bottom:6px">📚</div><div style="color:#c4b5fd;font-weight:700;font-size:14px">Học sinh &amp; Sinh viên</div><div style="color:#a090c0;font-size:13.5px;margin-top:4px">AI giải thích khái niệm, tóm tắt tài liệu, luyện ngoại ngữ 24/7 – nhưng dùng đúng cách (hiểu bản chất, không chỉ sao chép) là kĩ năng cần rèn luyện.</div></div>
+          <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:14px"><div style="font-size:22px;margin-bottom:6px">🎨</div><div style="color:#c4b5fd;font-weight:700;font-size:14px">Sáng tạo nội dung</div><div style="color:#a090c0;font-size:13.5px;margin-top:4px">AI tạo hình ảnh, âm nhạc, video chỉ từ mô tả văn bản – đặt ra các câu hỏi mới về bản quyền và ghi nguồn nội dung do AI tạo ra.</div></div>
+          <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:14px"><div style="font-size:22px;margin-bottom:6px">🏥</div><div style="color:#c4b5fd;font-weight:700;font-size:14px">Y tế &amp; Khoa học</div><div style="color:#a090c0;font-size:13.5px;margin-top:4px">AlphaFold (Google DeepMind) đã dự đoán cấu trúc hàng trăm triệu protein, được coi là một trong những đóng góp lớn của AI cho khoa học sự sống, và từng được vinh danh giải Nobel Hoá học 2024.</div></div>
+        </div>
+      </div>
+
+      <div class="mo-rong-note" style="margin-top:20px;margin-bottom:0">💡 <span>Muốn tìm hiểu thêm, em có thể tự tra cứu (có thầy cô hướng dẫn) tại các trang chính thức của từng công cụ AI. Khi dùng AI để học, luôn kiểm tra lại thông tin quan trọng thay vì tin tuyệt đối vào câu trả lời AI đưa ra – đây cũng là một biểu hiện của "khả năng suy luận" mà chính con người cần rèn luyện.</span></div>
+    </div>
+  </div>
+</main>
+
+</div>
+
+<script>
+let fs = 18;
+function changeFont(d) { fs = Math.min(30, Math.max(13, fs + d)); document.body.style.fontSize = fs + 'px'; }
+let light = false;
+function toggleTheme() {
+  light = !light;
+  document.documentElement.style.setProperty('--bg', light ? '#f0f4f8' : '#070b14');
+  document.documentElement.style.setProperty('--text', light ? '#1a2540' : '#e8eef8');
+  document.documentElement.style.setProperty('--panel', light ? '#fff' : '#111a2e');
+  document.documentElement.style.setProperty('--panel2', light ? '#f5f8fc' : '#162035');
+  document.documentElement.style.setProperty('--border', light ? '#d0daea' : '#1e2f4d');
+  document.body.style.background = light
+    ? 'radial-gradient(ellipse at 20% 10%, #d8e8f8 0%, #f0f4f8 60%)'
+    : 'radial-gradient(ellipse at 20% 10%, #0d1f3c 0%, #070b14 50%)';
+}
+function setActive(el) { document.querySelectorAll('.toc a').forEach(a => a.classList.remove('active')); el.classList.add('active'); }
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrolled = doc.scrollTop || document.body.scrollTop;
+  const total = doc.scrollHeight - doc.clientHeight;
+  const pct = total > 0 ? Math.round((scrolled / total) * 100) : 0;
+  document.getElementById('prog').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = 'Tiến độ đọc: ' + pct + '%';
+});
+const sections = document.querySelectorAll('section[id], h2[id], h3[id]');
+const tocLinks = document.querySelectorAll('.toc a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + id) a.classList.add('active'); });
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

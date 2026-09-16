@@ -1,0 +1,25 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*.local
+
+# Tài liệu tham khảo có bản quyền, dung lượng lớn — chỉ để ở máy, không đẩy lên GitHub
+tai-lieu/*.pdf
+tai-lieu/*.docx
+tai-lieu/sgk-pages/
+
+.vercel
+
+# Khoa service account cua Google - TUYET DOI khong dua len git
+*service-account*.json
+*-key.json
+khoa-google*.json
+
+
+# Thu muc chua khoa service account - TUYET DOI khong dua len git
+Key JSon/
+*.json.key
+
+.vercel
+.env*
